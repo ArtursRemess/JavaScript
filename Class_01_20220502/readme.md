@@ -14,4 +14,5 @@ Most significant bit - Less significant bit
 ***Reference: https://www.ecowin.org/ascii.htm***
 ## [GitHub](https://github.com/) pamati ###  
 >[GitHub sintakse](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)  
+>VCS  Version control system
 :+1:
