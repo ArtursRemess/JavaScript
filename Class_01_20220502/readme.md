@@ -8,6 +8,7 @@
 Most significant bit - Less significant bit  
 0000 0000  
 **ASC tabula(128 simboli)**  
-![This is an image](https://www.ecowin.org/aulas/resources/tables/asciitable.jpg)
+![This is an image](https://www.ecowin.org/aulas/resources/tables/asciitable.jpg)  
+***Reference: https://www.ecowin.org/ascii.htm***
 ## [GitHub](https://github.com/) pamati ###  
 >[GitHub sintakse](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
