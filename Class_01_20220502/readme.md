@@ -1,7 +1,8 @@
 # 1.nodarbība
-## HTML source tēmas
+## HTML
 ### View source
-### Tags
+### Tags  
+< >
 ### Elementārā atmiņas šūna
 8 Biti  => 1 baits => simbols  
 Most significant bit - Less significant bit  
