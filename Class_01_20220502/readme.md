@@ -1,3 +1,4 @@
+
 # 1.nodarbība
 ## HTML
 ### View source
@@ -11,4 +12,5 @@ Most significant bit - Less significant bit
 ![This is an image](https://www.ecowin.org/aulas/resources/tables/asciitable.jpg)  
 ***Reference: https://www.ecowin.org/ascii.htm***
 ## [GitHub](https://github.com/) pamati ###  
->[GitHub sintakse](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+>[GitHub sintakse](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)  
+:+1:
