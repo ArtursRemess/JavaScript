@@ -21,7 +21,7 @@ vai arī online
 ## Git Bash commands for Visual Studio Code 
  > git clone https://github.com/
  ArtursRemess/JavaScript (copy local copy from GitHub repository)  
- git config --global user.email "siarefita@gmail.com" (user email config)
+ git config --global user.email "siarefita@gmail.com" (user email config)  
  git config --global user.name "Arturs Remess" (user name config)  
  - Omit " --global " to set the identity only in this repository.
 
