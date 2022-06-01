@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forms</title>
+</head>
+<style>
+    table, th, td {
+          border: 1px solid DarkGray ;
+          border-collapse: collapse;
+          text-align:center;
+          vertical-align: top;;
+        }
+</style>    
+<script>
+    function formdata() 
+    {
+    var ffname=document.getElementById("fname").value ;
+        ffsurname = document.getElementById("fsurname").value ;
+        ffemail = document.getElementById("femail").value ;
+        document.writeln("Mani sauc:"+ ffname);
+        document.writeln(ffsurname+"<br>");
+        document.writeln("Mans epasts:" + ffemail);
+    }
+  </script>
+
+<body>
+
+<table>
+     <form action="get.html" method="GET" > 
+<!-- <form action="http://www.foo.com" method="POST"> -->
+<tr>
+    <td><label for="fname">Name:</label></td>
+    <td><input type="text" id="fname" name="fname" value="Egils"><br></td>
+</tr>
+<tr>
+    <td><label for="fsurname">Surname:</label></td>
+    <td><input type="text" id="fsurname" name="fsurname" value="Levits" pattern="[A-Za-z]{3}"><br></td>
+</tr>
+<tr>
+    <td><label for="femail">Email:</label></td>
+    <td><input type="email" id="femail" name="femail" value="prezidents@valsts.lv"><br></td>
+</tr>
+<tr>
+    <td><label for="fpassword">Password:</label></td>
+    <td><input type="password" id="fpassword" name="fpassword" ><br></td>
+</tr>
+<tr>
+    <td><label for="fdate">Date:</label></td>
+    <td><input type="date" id="fdate" name="fdate" ><br></td>
+</tr>
+
+<tr>
+    <td><label for="fcomment">Komentārs:</label></td>
+    <td><textarea id="fcomment" name="fcomment" rows="4" cols="50" >
+        Komentārs
+        </textarea><br>
+    </td>
+</tr>
+
+<tr>
+    <td colspan="2"><input type="submit" value="GO!!!" onclick="formdata()">&nbsp;<input type="reset" value="Clear"></td>
+</tr>
+
+
+   </form>
+</table>
+
+
+</body>
+</html>
