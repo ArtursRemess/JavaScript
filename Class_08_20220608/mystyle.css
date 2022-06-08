@@ -1,0 +1,38 @@
+<style>
+table, th, td {
+      border: 1px solid DarkGray ;
+      border-collapse: collapse;
+      text-align:center;
+      vertical-align: top;;
+    }
+th {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+    }
+td {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: small;
+   }
+
+body {
+    background-color: lightgray;
+    }
+hr {
+    height:2px;
+    border-width:0;
+    color:black;
+    background-color:black
+    }
+h1 {
+    color: gray;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: xx-large;
+    }
+
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align:justify;
+  font-size: small;
+}
+</style>
