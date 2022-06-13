@@ -1,8 +1,8 @@
-var xo = 99,
+var xo = 45,
     y = null,
     z = String(y),
-    cipars=null,
-    binars=String(cipars);
+    binars = 0;
+    rezultats = String(binars);
 document.getElementById("dec").innerHTML = xo;
 
 y = (xo << 0) >> 7;
@@ -23,14 +23,26 @@ z = z + String(y)
 console.log(z);
 console.log('ŗezulttats');
 
-console.log(binars=xo-(2*(xo>>1)),xo=xo>>1);
-console.log(binars=xo-(2*(xo>>1)),xo=xo>>1);
-console.log(binars=xo-(2*(xo>>1)),xo=xo>>1);
-console.log(binars=xo-(2*(xo>>1)),xo=xo>>1);
-console.log(binars=xo-(2*(xo>>1)),xo=xo>>1);
-console.log(binars=xo-(2*(xo>>1)),xo=xo>>1);
-console.log(binars=xo-(2*(xo>>1)),xo=xo>>1);
-console.log(binars=xo-(2*(xo>>1)),xo=xo>>1);
+console.log('pārbaude  ' + xo.toString(2));
+
+console.log(xo,binars=xo-(2*(xo>>1)),xo=xo>>1);
+rezultats=rezultats+String(binars);
+console.log(xo,binars=xo-(2*(xo>>1)),xo=xo>>1);
+rezultats=rezultats+String(binars);
+console.log(xo,binars=xo-(2*(xo>>1)),xo=xo>>1);
+rezultats=rezultats+String(binars);
+console.log(xo,binars=xo-(2*(xo>>1)),xo=xo>>1);
+rezultats=rezultats+String(binars);
+console.log(xo,binars=xo-(2*(xo>>1)),xo=xo>>1);
+rezultats=rezultats+String(binars);
+console.log(xo,binars=xo-(2*(xo>>1)),xo=xo>>1);
+rezultats=rezultats+String(binars);
+console.log(xo,binars=xo-(2*(xo>>1)),xo=xo>>1);
+rezultats=rezultats+String(binars);
+console.log(xo,binars=xo-(2*(xo>>1)),xo=xo>>1);
+rezultats=rezultats+String(binars);
+console.log(rezultats);
+
 
  a = 45;
 //
