@@ -3,28 +3,44 @@
   <head>
     <title>Training with variables</title>
     <link rel="stylesheet" href="mystyle.css" />
+    <script>
+      function formdata() {
+        decim=5;
+        document.write('aaa'+decim);
+        decim = document.getElementById("skaitlis").value;
+        document.write('aaa'+decim);
+        console.log("aaa" + decim);
+      }
+    </script>
   </head>
   <body>
     <table>
-      <tr>
-        <td>Skaitis(DEC):</td>
-        <td id="skaitlis_"></td>
-      </tr>
-      <tr>
-        <td>Rezultāts(BIN):</td>
-        <td id="rezultats_"></td>
-      </tr>
-      <tr>
-        <td>Pārbaude(BIN):</td>
-        <td id="parbaude_"></td>
-      </tr>
-    </table>
-    <p></p>
-    <p></p>
+      <form action="dectobin.html" method="GET">
+        <tr>
+          <td>Skaitlis(DEC):</td>
+          <td id="skaitlis_"></td>
+        </tr>
+        <tr>
+          <td>Rezultāts(BIN):</td>
+          <td id="rezultats_"></td>
+        </tr>
+        <tr>
+          <td>Pārbaude(BIN):</td>
+          <td id="parbaude_"></td>
+        </tr>
 
-    <button type="button" onclick="myFunction()">Try it</button>
-  
+        <tr>
+          <td><label for="">Skaitlis:</label></td>
+          <td><input type="number" id="skaitlis" name="fskaitlis" value="34"/><br /></td>
+        </tr>
+        <td colspan="2">
+          <input type="submit" value="GO!!!" onclick="formdata()" />
+        </td>
+      </form>
+    </table>
+
     <script src="./js/dectobin.js"></script>
+
     <!-- 
     <h1 id="kuku">Java Script external file</h1>
     <p id="demo">A Paragraph</p>
