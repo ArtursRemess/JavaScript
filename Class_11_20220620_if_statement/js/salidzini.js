@@ -17,7 +17,7 @@ if (c>d && c>e)
         }
     
    }
-else if (d>e && d>e)
+else if (d>c && d>e)
    {
     console.log("Vislielākais ir d=" +d )
     if (c>e)
