@@ -6,7 +6,7 @@ var
  
 
 teksts='Cien. ' + vards + '<br>';
-teksts=teksts+'Mēs redzam ka jūsu kontā ir '+summa+ ' EUR liela naudas summa<br>';
+teksts=teksts+'Mēs redzam, ka jūsu kontā ir '+summa+ ' EUR liela naudas summa<br>';
 
 teksts=teksts+'Ja jūs ieguldīsiet uz 1 gadu, 1.gadā jūs nopelnīsiet ' +(Math.round(summa*0.01));
 summa=summa+(Math.round(summa*0.01));
