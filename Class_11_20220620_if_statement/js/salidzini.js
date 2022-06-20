@@ -41,8 +41,8 @@ else if (d>e && d>e)
         }
         else
         { 
-          console.log("Nākamais ir d=" +c )
-          console.log("Mazākais ir c=" +c )
+          console.log("Nākamais ir c=" +c )
+          console.log("Mazākais ir d=" +d )
         }
    }
 
