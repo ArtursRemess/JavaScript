@@ -12,11 +12,11 @@ if (text == true) {
   logatips = prompt("Atvērt jaunā lapā", logatips);
 
   var count = 0;
-  var el = document.getElementById('seconds');
+  var el = document.getElementById('demo3');
   
   function timer() {
   count += 1;
-  el.innerText = "Palika" + count + "sekundes.";
+  el.innerText = "Palika" + (5 - count) + "sekundes.";
     if (count == 5) {clearInterval(cancel)};
   }
   var cancel = setInterval(timer, 1000);
