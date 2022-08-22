@@ -6,9 +6,9 @@ var text = "Jā",
   links = "https://spoki.lv",
   logatips = "Jā";
 
-text = prompt("Pāriet uz citu lapu?", text);
+text = confirm("Pāriet uz citu lapu?" );
 document.getElementById("demo").innerHTML = text;
-if (text == "Jā") {
+if (text == true) {
   links = prompt("Kādu interneta adresi?", links);
   document.getElementById("demo2").innerHTML = links;
   logatips = prompt("Atvērt jaunā lapā", logatips);
