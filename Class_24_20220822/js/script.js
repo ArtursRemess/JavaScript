@@ -17,6 +17,7 @@ if (text == true) {
   function timer() {
   count += 1;
   el.innerText = "Palika" + count + "sekundes.";
+    if (count == 5) {clearInterval(cancel)};
   }
   var cancel = setInterval(timer, 1000);
    
