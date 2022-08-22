@@ -19,7 +19,7 @@ if (text == true) {
   el.innerText = "Palika" + count + "sekundes.";
   }
   var cancel = setInterval(timer, 1000);
-    
+   
   
   if (logatips == null) {
     setTimeout(() => {
