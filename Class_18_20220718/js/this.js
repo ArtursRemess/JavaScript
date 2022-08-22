@@ -2,8 +2,8 @@
 // ----- call()---------
 
 var  _toString = Object.prototype.toString; //no stenders-cosmetics
- var value=["Audi","80","Diesel"];
-// var value=new Date();
+// var value=["Audi","80","Diesel"];
+ var value=new Date();
 // var value={firstName: "John", lastName: "Doe" };
 // var value="aaa";
 
