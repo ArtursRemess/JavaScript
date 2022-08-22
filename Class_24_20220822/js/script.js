@@ -1,3 +1,7 @@
+
+
+
+
 var text = "Jā",
   links = "https://spoki.lv",
   logatips = "Jā";
@@ -8,6 +12,17 @@ if (text == "Jā") {
   links = prompt("Kādu interneta adresi?", links);
   document.getElementById("demo2").innerHTML = links;
   logatips = prompt("Atvērt jaunā lapā", logatips);
+
+  var count = 0;
+  var el = document.getElementById('seconds');
+  
+  function timer() {
+  count += 1;
+  el.innerText = "Palika" + count + "sekundes.";
+  }
+  var cancel = setInterval(timer, 5000);
+    
+  
   if (logatips == null) {
     setTimeout(() => {
       window.open(links, "_self");
@@ -19,3 +34,5 @@ if (text == "Jā") {
     }, 5000);
   }
 }
+
+
