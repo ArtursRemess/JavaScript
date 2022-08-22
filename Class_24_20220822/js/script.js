@@ -1,7 +1,5 @@
 
 
-
-
 var text = "Jā",
   links = "https://spoki.lv",
   logatips = "Jā";
@@ -20,7 +18,7 @@ if (text == true) {
   count += 1;
   el.innerText = "Palika" + count + "sekundes.";
   }
-  var cancel = setInterval(timer, 5000);
+  var cancel = setInterval(timer, 1000);
     
   
   if (logatips == null) {
