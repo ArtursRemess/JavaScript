@@ -1,14 +1,14 @@
-var text = "Jā",
+var 
   links = "https://iauto.lv",
-  logatips = 1;
-let i = 3;
+  logatips = 1,
+  i = 3;
 function isUrl(s) {
   var regexp =
     /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
   return regexp.test(s);
 }
 
-text = confirm("Pāriet uz citu lapu?");
+let text = confirm("Pāriet uz citu lapu?");
 if (text == true) {
   links = prompt("Uz kādu interneta adresi?", links);
   do {
@@ -17,10 +17,12 @@ if (text == true) {
       i -= 1;
       if (i == 0) {break;}
   } while (isUrl(links) == false);
+
   if (isUrl(links) == true){
       logatips = prompt("Adresi " + links + " atvērt: \r\n1-jaunā TAB \r\n2-šajā logā \r\n3-atvērt jaunā logā \r\n4-šajā logā saglabājot history(assign)\r\n5-šajā logā(nesaglabājot history(replace)) \r\n6-exit", logatips);
       logatips = Number(logatips);
-     } else {logatips=7}
+  } else {logatips=7}
+
 if (logatips < 6 && logatips > 0 && logatips == Math.round(logatips)) {
    var count = 6;
    var el = document.getElementById("demo3");
