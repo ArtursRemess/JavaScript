@@ -9,7 +9,7 @@ function myFunction() {
         if (i <= stars_count) {stars += '<span class="fa fa-star checked"></span>'} 
         else {stars += '<span class="fa fa-star"></span>'};
     }
-    document.getElementById('Stars').innerHTML=stars;
+    document.getElementById('stars').innerHTML=stars;
 }
 
     //  const h1 = document.getElementById('h1');
