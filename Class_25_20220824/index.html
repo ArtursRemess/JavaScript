@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+          JavaScript DOM
+        </title>
+        <link rel="stylesheet" href="../mystyle.css" />
+    </head>
+    <body>
+        <p>Please rate the service:</p>
+        <p>
+            <label for="very-poor">
+                <input type="radio" name="rate" value="1" id="Very-poor" onclick="myFunction()"> Very poor
+            </label>
+            <label for="poor">
+                <input type="radio" name="rate" value="2" id="Poor" onclick="myFunction()"> Poor
+            </label>
+            <label for="ok">
+                <input type="radio" name="rate" value="3" id="Ok" onclick="myFunction()"> OK
+            </label>
+            <label for="good">
+                <input type="radio" name="rate" value="4" id="Good" onclick="myFunction()" > Good
+            </label>
+            <label for="very-good">
+                <input type="radio" name="rate" value="5" id="Very-good" onclick="myFunction()"> Very Good
+            </label>
+        </p>
+        <p id="output"></p>
+        <p id="demo1"></p>
+        
+        <script src="./js/script.js"></script>
+    </body>
+</html>
