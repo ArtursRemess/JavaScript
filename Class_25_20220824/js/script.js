@@ -1,6 +1,6 @@
 
 function myFunction() {
-    output.innerText = document.querySelector('input[name="rate"]:checked').id;
+    document.getElementById('demo').innerText = document.querySelector('input[name="rate"]:checked').id;
 
     /* zvaigznes */
     var stars_count = Number(document.querySelector('input[name="rate"]:checked').value);
@@ -9,7 +9,7 @@ function myFunction() {
         if (i <= stars_count) {stars += '<span class="fa fa-star checked"></span>'} 
         else {stars += '<span class="fa fa-star"></span>'};
     }
-    document.getElementById('stars').innerHTML=stars;
+    document.getElementById('Stars').innerHTML=stars;
 }
 
     //  const h1 = document.getElementById('h1');
