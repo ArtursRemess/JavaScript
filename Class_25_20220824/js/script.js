@@ -1,11 +1,36 @@
 
 function myFunction() {
     output.innerText = document.querySelector('input[name="rate"]:checked').id;
-    demo1.innerText = document.querySelector('input[name="rate"]:checked').value;
+
+    /* zvaigznes */
+    var stars_count = Number(document.querySelector('input[name="rate"]:checked').value);
+    var stars='';
+    for (let i = 1; i < 6; i++) {
+        if (i <= stars_count) {stars += '<span class="fa fa-star checked"></span>'} 
+        else {stars += '<span class="fa fa-star"></span>'};
     }
+    document.getElementById('Stars').innerHTML=stars;
+}
 
+    //  const h1 = document.getElementById('h1');
+    // h1.innerHTML=stars;
+    // h1.firstChild.textContent = stars;
+    // const secondChildNode = document.querySelector("text");
+   // console.log(secondChildNode.nodeType);
+   // console.log(secondChildNode.nodeName);
+   // console.log(secondChildNode.nodeValue);
+    
 
- 
+    // const listItem = document.querySelector("text");
+     // 
+    //const newItem = document.createElement('span');
+    // newItem.innerHTML = stars;
+  //  listItem.parentNode.replaceChild(newItem, listItem);
+
+    // document.getElementById('text').replaceWith(stars);
+     
+    // document.getElementById("text")=text;
+  
 /*
 if (rates.checked == true){
     document.getElementById("demo").innerHTML="Rating: " + rate.value;
