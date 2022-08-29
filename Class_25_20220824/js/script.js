@@ -1,8 +1,8 @@
-
 function myFunction() {
     document.getElementById('demo').innerText = document.querySelector('input[name="rate"]:checked').id;
 
     /* zvaigznes */
+
     var stars_count = Number(document.querySelector('input[name="rate"]:checked').value);
     var stars='';
     for (let i = 1; i < 6; i++) {
@@ -10,7 +10,8 @@ function myFunction() {
         else {stars += '<span class="fa fa-star"></span>'};
     }
     document.getElementById('Stars').innerHTML=stars;
-}
+} 
+
 
     //  const h1 = document.getElementById('h1');
     // h1.innerHTML=stars;
