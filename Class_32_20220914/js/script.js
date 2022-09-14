@@ -10,58 +10,52 @@ var i = 1;
 document.cookie = `connection=${i}; path=/; expires=${expires.toGMTString()}`;
 
 class Cookie {
-	static get(name) {
-	  const cookieName = `${encodeURIComponent(name)}=`;
-	  const cookie = document.cookie;
-	  let value = null;
-  
-	  const startIndex = cookie.indexOf(cookieName);
-	  if (startIndex > -1) {
-		let endIndex = cookie.indexOf(';', startIndex);
-		if (endIndex == -1) {
-		  endIndex = cookie.length;
-		}
-		value = decodeURIComponent(
-		  cookie.substring(startIndex + cookieName.length, endIndex)
-		);
-	  }
-	  return value;
-	}
-  
-	static set(name, value, expires, path, domain, secure) {
-	  let cookieText = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
-	  if (expires instanceof Date) {
-		cookieText += `; expires=${expires.toGMTString()}`;
-	  }
-  
-	  if (path) cookieText += `; path=${path}`;
-	  if (domain) cookieText += `; domain=${domain}`;
-	  if (secure) cookieText += `; secure`;
-  
-	  document.cookie = cookieText;
-	}
+  static get(name) {
+    const cookieName = `${encodeURIComponent(name)}=`;
+    const cookie = document.cookie;
+    let value = null;
 
-	static modify(name, value ) {
-	 if (Cookie.get(name))
-		{
-		let cookieText = `${encodeURIComponent(name)}=${encodeURIComponent(Number(value)+1)}`;
-				
-		document.cookie = cookieText;
-	  }
-	  }
-   
-
-
-
-
-
-
-
-  
-	static remove(name, path, domain, secure) {
-	  Cookie.set(name, '', new Date(0), path, domain, secure);
-	}
+    const startIndex = cookie.indexOf(cookieName);
+    if (startIndex > -1) {
+      let endIndex = cookie.indexOf(";", startIndex);
+      if (endIndex == -1) {
+        endIndex = cookie.length;
+      }
+      value = decodeURIComponent(
+        cookie.substring(startIndex + cookieName.length, endIndex)
+      );
+    }
+    return value;
   }
 
-  console.log(Cookie.get("connection"));
-//  Cookie.remove('connection',"/")
+  static set(name, value, expires, path, domain, secure) {
+    let cookieText = `${encodeURIComponent(name)}=${encodeURIComponent(value)}`;
+    if (expires instanceof Date) {
+      cookieText += `; expires=${expires.toGMTString()}`;
+    }
+
+    if (path) cookieText += `; path=${path}`;
+    if (domain) cookieText += `; domain=${domain}`;
+    if (secure) cookieText += `; secure`;
+
+    document.cookie = cookieText;
+  }
+
+  static modify(name, value, add) {
+	if (Cookie.get(name)) {
+      if (add == 1) {
+		document.cookie=`connection=${value+1}; path=/; expires=${expires.toGMTString()}`;
+      } else {
+		document.cookie=`connection=${value}; path=/; expires=${expires.toGMTString()}`;
+      }
+      
+    }
+  }
+
+  static remove(name, path, domain, secure) {
+    Cookie.set(name, "", new Date(0), path, domain, secure);
+  }
+}
+
+console.log(Cookie.get("connection"));
+ // Cookie.remove('connection',"/")
