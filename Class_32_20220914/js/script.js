@@ -1,8 +1,9 @@
 ﻿// https://www.javascripttutorial.net/web-apis/javascript-cookies/
 
-expires = new Date('2022-09-14T21:00:00.000');
+// expires = new Date('2022-09-14T21:00:00.000');
+expires = new Date();
 console.log(expires);
-expires.setSeconds(expires.getSeconds()+30);
+expires.setSeconds(expires.getSeconds() + 300);
 console.log(expires);
 
 var i = 1;
@@ -39,6 +40,23 @@ class Cookie {
   
 	  document.cookie = cookieText;
 	}
+
+	static modify(name, value ) {
+	 if (Cookie.get(name))
+		{
+		let cookieText = `${encodeURIComponent(name)}=${encodeURIComponent(Number(value)+1)}`;
+				
+		document.cookie = cookieText;
+	  }
+	  }
+   
+
+
+
+
+
+
+
   
 	static remove(name, path, domain, secure) {
 	  Cookie.set(name, '', new Date(0), path, domain, secure);
@@ -46,3 +64,4 @@ class Cookie {
   }
 
   console.log(Cookie.get("connection"));
+//  Cookie.remove('connection',"/")
