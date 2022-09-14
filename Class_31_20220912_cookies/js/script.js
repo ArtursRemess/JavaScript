@@ -1,95 +1,124 @@
-﻿// https://www.javascripttutorial.net/javascript-dom/javascript-form/
+﻿// https://www.javascripttutorial.net/web-apis/javascript-cookies/
 
-const form = document.querySelector("#signup");
+expires = new Date('2022-09-14T21:00:00.000');
+//https://www.w3schools.com/js/js_cookies.asp
+//A Function to Get a Cookie
+function getCookie(cname) {
+	let name = cname + "=";
+	let decodedCookie = decodeURIComponent(document.cookie);
+	let ca = decodedCookie.split(';');
+	console.log(document.cookie);
+	console.log(ca);
 
-function showInstruction(element, state) {
-  const instruction = element.parentNode.querySelector("small");
-  element.className = state ? "success" : "error";
-  instruction.innerText =  state ? "" : "Please enter " + element.id
+	for(let i = 0; i <ca.length; i++) {
+	  let c = ca[i];
+//	   noņem space sākumā
+	  while (c.charAt(0) == ' ') {
+		c = c.substring(1);
+    	}
+// ja rindas sākumā ir "name="  atgriež visu kas aiz "="		
+	  if (c.indexOf(name) == 0) {
+		return c.substring(name.length, c.length);
+	  }
+	}
+	return "";
+  }
+  console.log(getCookie("connection"));
+  console.log(getCookie("cookie_name"));
+  console.log("----------");
+
+const str = document.cookie;
+if(str==''){
+  console.log('No cookie');
+  i = 1;
+  document.cookie = `connection=${i}; path=/; expires=${expires.toGMTString()}`;
+  document.cookie = `cookie_name=cookie_value;`;
+}
+else{
+  console.log("cookies: ",str);
+  console.log("cookies (after split by connection=): ",str.split('connection='));
+  //console.log("cookies (after split by connection=): ",str.split('connection=')[1]);
+  i = Number(getCookie("connection")) + 1;
+  // i = (Number(str.split('connection=')[1]) ? Number(str.split('connection=')[1]) : 1) + 1;
+  document.cookie = `connection=${i}; path=/; expires=${expires.toGMTString()}`;
+  //console.log("cookies (after split by ;): ",str.split('connection=')[0].split(';'));
+  //console.log(str.split('connection=')[0].split(';')[0]);
 }
 
-function hasValue(element) {
-  if (element.value.trim() === "") {
-    showInstruction(element, false);
-    return false;
-  } else {
-    showInstruction(element, true);
-    if(element.id == 'email'){
-        if(!validateEmail(email)){
-            email.parentNode.querySelector("small").innerText = EMAIL_INVALID;
-            email.className = "error";
-        };
-    }
-    return true;
+// document.cookie = `username=admin; path=/; expires=${expires.toGMTString()}`;
+// let intervalID = setInterval(check_cookie, 1000);
+function check_cookie(){
+  var current = new Date();
+  console.log(current);
+  const str = document.cookie;
+  console.log(str);
+  if(str==''){
+    clearInterval(intervalID);
   }
 }
+
 
 /*
-/
- ^(
-    (
-         [^<>()\[\]\\.,;:\s@"]
-     +(
-       \.[^<>()\[\]\\.,;:\s@"]
-     +)
-   *)
-     |(".+")
-  )
-     
-     (@
-        (\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\]) // c.c.c.c līdz ccc.ccc.ccc.ccc
-     |
-        (([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,})
-     )$
-/;
-*/
+	function setCookie(cname,cvalue,exdays) {
+	  const d = new Date();
+	  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+	  let expires = "expires=" + d.toUTCString();
+	  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+	
+	function getCookie(cname) {
+	  let name = cname + "=";
+	  let decodedCookie = decodeURIComponent(document.cookie);
+	  let ca = decodedCookie.split(';');
+	  for(let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) == ' ') {
+		  c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+		  return c.substring(name.length, c.length);
+		}
+	  }
+	  return "";
+	}
+	
+	function checkCookie() {
+	  let user = getCookie("username");
+	  if (user != "") {
+		alert("Welcome again " + user);
+	  } else {
+		 user = prompt("Please enter your name:","");
+		 if (user != "" && user != null) {
+		   setCookie("username", user, 30);
+		 }
+	  }
+	}
 
-function validateEmail(element) {
-    const emailRegex =
-		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    console.log(emailRegex.test(element.value));
-    return emailRegex.test(element.value);
-  }
   
-form.addEventListener("submit", function (event) {
-  // stop form submission
-  event.preventDefault();
+  let encodedCookie = encodeURIComponent(document.cookie);
+  console.log("encode " + encodedCookie);
 
-  const name = form.elements["name"];
-  const email = form.elements["email"];
-
-  const name_state = hasValue(name);
-  const email_state = hasValue(email);
-
-  let email_validation = false;
-  if(email_state){
-    email_validation = validateEmail(email);
-  }
-    
-/*
-  if(email_state && !email_validation){
-    let instruction = email.parentNode.querySelector("small");
-    email.className = "error";
-    instruction.innerText = EMAIL_INVALID;
-  }
+  let decodedCookie = decodeURIComponent(encodedCookie);
+  console.log("decode " + decodedCookie);
 */
 
-  //if(hasValue(email) && hasValue(name))
-  //if(hasValue(name) && hasValue(email))
-  if(name_state && email_state && email_validation)
-    form.submit();
-});
+  /*
 
-/*if(element.id == 'name')
-        instruction.innerText = "Please enter name";
-        if(element.id == 'email')
-        instruction.innerText = "Please enter email";*/
-/*switch (element.id) {
-      case "name":
-        instruction.innerText = "Please enter name";
-        break;
-      case "email":
-        instruction.innerText = "Please enter email";
-        break;
-    }*/
-//instruction.innerText = "Please enter "+ element.id;
+  ﻿// https://www.javascripttutorial.net/web-apis/javascript-cookies/
+
+expires = new Date('2022-09-12T20:24:00.000');
+
+document.cookie = `username=admin; path=/; expires=${expires.toGMTString()}`;
+
+let intervalID = setInterval(check_cookie, 1000);
+
+function check_cookie(){
+  var current = new Date();
+  console.log(current);
+  const str = document.cookie;
+  console.log(str);
+  if(str==''){
+    clearInterval(intervalID);
+  }
+}
+*/
