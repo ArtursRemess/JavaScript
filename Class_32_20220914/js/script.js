@@ -44,8 +44,12 @@ class Cookie {
   static modify(name, value, add) {
 	if (Cookie.get(name)) {
       if (add == 1) {
-		document.cookie=`connection=${value+1}; path=/; expires=${expires.toGMTString()}`;
+		if (value)
+			{document.cookie=`connection=${value+1}; path=/; expires=${expires.toGMTString()}`;}
+		else
+			{document.cookie=`connection=${Number(Cookie.get(name))+1}; path=/; expires=${expires.toGMTString()}`;}
       } else {
+		console.log("exists");
 		document.cookie=`connection=${value}; path=/; expires=${expires.toGMTString()}`;
       }
       
@@ -59,3 +63,16 @@ class Cookie {
 
 console.log(Cookie.get("connection"));
  // Cookie.remove('connection',"/")
+
+ function clickCounter() {
+	if (typeof(Storage) !== "undefined") {
+	  if (localStorage.clickcount) {
+		localStorage.clickcount = Number(localStorage.clickcount)+1;
+	  } else {
+		localStorage.clickcount = 1;
+	  }
+	  document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
+	} else {
+	  document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+	}
+  }
