@@ -1,4 +1,34 @@
-﻿const container = document.querySelector('.container'); // dati no container bloka (krēsli)
+﻿var seats = []; //sēdvietu masīvs
+const seat_rows = 5; //sēdvietu rindu skaits
+const seat_seats = 10; //sēdvietas rindā
+
+for (let i = 1; i < seat_rows+1; i++)  // izveido masīvu ar sēdvietu numuru sarakstu
+  {
+    for (let j = 1; j < seat_seats+1; j++)
+    {
+      seats.push([i,j]);
+    }
+  }
+  var div_kino = document.getElementById('kino'); //sēdvietu zāle
+  div_kino.insertAdjacentHTML("beforeend", "<div class='row' id='row'></div>"); // izveido 1.rindu
+  var div_row = div_kino.lastElementChild; // atlasa pēdējo child no "kino"
+
+  i = 1;
+  seats.forEach((seat,current_id) => {
+    div_row.insertAdjacentHTML("beforeend", "<div class='seat' title='"+ seat.at(0) +".row, "+ seat.at(1) +".seat'></div>");
+    if (i < seat_seats){  //skaita krēslus rindā, ja sasniegts skaits veido jaunu rindu
+      i++;
+    }
+    else if ((seats.length-1) > current_id) // ja ir pēdējais ieraksts nepievienot jaunu sedvitu rindu
+    { i = 1;
+      div_kino.insertAdjacentHTML("beforeend", "<div class='row' id='row'></div>"); 
+      div_row = div_kino.lastElementChild;
+    }  
+  });
+
+ console.table(seats);
+
+/* const container = document.querySelector('.container'); // dati no container bloka (krēsli)
 
 const seats = document.querySelectorAll('.row .seat:not(.occupied)'); //saņem datus par krēsliem, izņemot VIP sēdvietas
 
@@ -90,3 +120,4 @@ container.addEventListener('click', e => {
 
 // Initial count and total set
 updateSelectedCount();
+*/
