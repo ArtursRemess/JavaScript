@@ -61,9 +61,9 @@ for (let i = 1; i < seat_rows+1; i++)  // izveido masīvu ar sēdvietu numuru sa
 
  // console.table(seats);
 
-/* const container = document.querySelector('.container'); // dati no container bloka (krēsli)
+ const container = document.querySelector('.container'); // dati no container bloka (krēsli)
 
-const seats = document.querySelectorAll('.row .seat:not(.occupied)'); //saņem datus par krēsliem, izņemot VIP sēdvietas
+ const seats_obj = document.querySelectorAll('.row .seat:not(.occupied)'); //saņem datus par krēsliem, izņemot VIP sēdvietas
 
 const count = document.getElementById('count'); 
 const total = document.getElementById('total');
@@ -89,7 +89,7 @@ function updateSelectedCount() {
   // atlasa atzīmētos krēslus
   const selectedSeats = document.querySelectorAll('.row .seat.selected');
 
-  const seatsIndex = [...selectedSeats].map(seat => [...seats].indexOf(seat));
+  const seatsIndex = [...selectedSeats].map(seat => [...seats_obj].indexOf(seat));
   console.log("Seats index " );
   console.log(seatsIndex);
 // saglabā web storage.   JSON.stringify Pārveido masīvu datos ku var saglabāt
@@ -110,7 +110,7 @@ function populateUI() {
 console.log(selectedSeats);
 // ja nav izvēlēti krēsli
   if (selectedSeats !== null && selectedSeats.length > 0) {
-    seats.forEach((seat, index) => {
+    seats_obj.forEach((seat, index) => {
  // ja atrod masīvā šadu numuru       
       if (selectedSeats.indexOf(index) > -1) {
 // Ja ir aizņemts
@@ -153,4 +153,3 @@ container.addEventListener('click', e => {
 
 // Initial count and total set
 updateSelectedCount();
-*/
