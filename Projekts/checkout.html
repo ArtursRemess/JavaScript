@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Movie Seat Checkout</title>
+  </head>
+  <body>
+        <h3>Your order</h3>
+        Movie name<div id="moviename"></div><br>
+
+        Tickets<br><br>
+        <div id="tickets"></div>
+        <div>--------------------------------------------------</div>
+        <div id="total" style="font-weight: bold"></div>
+        <br><br><b>Card payment</b><br>
+        Name on card<input type="text" id="name" value="John Doe">
+        Card number<input type="text" value="1234567890">
+        CVC<input size="3" type="text" value="123"><br>
+        <button onclick="buynow()">Pay Now</button>
+
+
+
+  <script src="./js/checkout.js"></script>
+  </body>
+</html>

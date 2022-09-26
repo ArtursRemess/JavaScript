@@ -71,7 +71,22 @@ function add_language(){
  console.table(language);
 }
 
-  
+function print_cv(){
+  save_cv();
+  location.href = "cvdb.html";
+}
+
+window.name = "original";
+function OpenNewWindow(){
+window.open(
+  "./sign_up/signup.html",
+  //"https://www.w3schools.com/js/js_object_prototypes.asp",
+  "test",
+  "height=500,width=500"
+);
+}
+
+
   // console.log(div_cv);
   // console.log(Object.values(div_cv));
 

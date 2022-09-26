@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+	<!DOCTYPE html>
+	<html>
+	<head>
+	
+	</head>
+	<!-- <body onload="check_cookie()"> -->
+<div id="div_cv">
+
+<input type="text" id="_name" placeholder="Vārds"><br><br>
+<input type="text" id="surname"><br><br>
+<input type="text" id="occupation"><br><br>
+<input type="text" id="salary"><br><br>
+<textarea rows="4" cols="25" id="other_info"></textarea><br><br>
+Izglītīb
+<div id="div_education">
+<select id="education_date">
+	<option value="2000">2000</option>
+	<option value="2005">2005</option>
+	<option value="2010">2010</option>
+	<option value="2015">2015</option>
+  </select>
+<select id="education_month">
+	<option value="01">01</option>
+	<option value="02">02</option>
+	<option value="03">03</option>
+	<option value="04">04</option>
+</select>
+<input type="text" id="education">
+<button onclick="add_education()" type="button">pievienot Izglītība</button>
+<br><br>
+</div>
+Darba pieredze
+<div id="div_job_history">
+<select id="job_history_date">
+	<option value="2000">2000</option>
+	<option value="2005">2005</option>
+	<option value="2010">2010</option>
+	<option value="2015">2015</option>
+  </select> 
+<select id="job_history_month">
+	<option value="01">01</option>
+	<option value="02">02</option>
+	<option value="03">03</option>
+	<option value="04">04</option>
+</select>
+<input type="text" id="job_history">
+
+<button onclick="add_job_history()" type="button">pievienot Darba pieredzi</button>
+<br><br>
+</div>
+Valodas
+<div id="div_language">
+<select id="language">
+	<option value="LV">LV</option>
+	<option value="RU">RU</option>
+	<option value="EN">EN</option>
+	<option value="DE">DE</option>
+  </select> 
+  Valodas līmenis:
+  <input type="radio" name="language_level" id="L1" value="Vāji">
+  <label for="language_level_1">Vāji</label>
+  <input type="radio" name="language_level" id="L2" value="Vidēji" checked>
+  <label for="language_level_2" >Vidēji</label>
+  <input type="radio" name="language_level" id="L3" value="Teicami">
+  <label for="language_level_3">Teicami</label>
+  
+  <button onclick="add_language()" type="button">pievienot valodu pieredzi</button>
+  <br><br> 
+</div> 
+ 	
+<p><button onclick="save_cv()" type="button">Saglabāt</button>
+   <button onclick="print_cv()" type="button">Izdrukāt</button> </p>
+
+</div> 
+	
+    <script src="./js/script.js"></script>
+    
+</body>
+</html>
+

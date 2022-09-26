@@ -1,0 +1,103 @@
+body{margin:2;background-color: hsla(154, 3%, 60%, 0.822);font-family: 'Roboto', sans-serif;font-weight: 300;}
+* {
+    box-sizing: border-box;
+}
+
+.header{background-repeat: no-repeat;background-size: cover;text-align: center;}
+
+.header .container {
+    padding: 0;
+}
+.logo{color: #fff;font-size: 68px;text-decoration: none;text-transform: uppercase;}
+.logo a{text-decoration: none;}
+
+.nameplace {
+    background-color: #bab9e5;
+    font-size: 20px;
+    line-height: 1.0;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+    margin: 0% 0 0;
+    
+}
+
+.surnameplace {
+    background-color: #bab9e5;
+    font-size: 20px;
+    line-height: 1.0;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+    margin: 0% 0 0;
+    
+}
+
+.occplace {
+    background-color: #bab9e5;
+    font-size: 20px;
+    line-height: 1.1;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+    margin: 0% 0 0;
+    
+}
+
+.salplace {
+    background-color: #bab9e5;
+    font-size: 20px;
+    line-height: 1.1;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+    margin: 0% 0 0;
+    
+}
+
+.textarea {
+    background-color: #bab9e5;
+    font-size: 20px;
+    line-height: 1.1;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+    margin: 0% 0 0;
+    
+}
+
+.edu {
+    background-color: #a6a5e5;
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+    margin: 0% 0 0;
+    
+}
+
+.job {
+    background-color: #a6a5e5;
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+    margin: 0% 0 0;
+    
+}
+
+.lang {
+    background-color: #a6a5e5;
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 4px;
+    color: rgb(0, 0, 0);
+    margin: 0% 0 0;
+    
+}
+
+.button {
+    background-color: #126c9d;
+    padding: 8px;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: bold;
+}

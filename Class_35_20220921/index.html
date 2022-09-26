@@ -1,6 +1,13 @@
-<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>CVDB.LV</title>
   </head>
   <body>
 	<!DOCTYPE html>
@@ -9,15 +16,20 @@
 	
 	</head>
 	<!-- <body onload="check_cookie()"> -->
+
+<div class="header homepage">
+    <div class="container">
+        <div class="logo"><a href="index.html">CVDB.LV</a></div>
+
 <div id="div_cv">
 
-<input type="text" id="_name" placeholder="Vārds"><br><br>
-<input type="text" id="surname"><br><br>
-<input type="text" id="occupation"><br><br>
-<input type="text" id="salary"><br><br>
-<textarea rows="4" cols="25" id="other_info"></textarea><br><br>
-Izglītīb
-<div id="div_education">
+<input type="text" id="_name" class="nameplace" placeholder="Vārds"><br><br>
+<input type="text" id="surname" class="surnameplace" placeholder="Uzvārds"><br><br>
+<input type="text" id="occupation" class="occplace" placeholder="Vēlama nodarbošanās"><br><br>
+<input type="text" id="salary"class="salplace" placeholder="Vēlams atalgojums no..."><br><br>
+<textarea rows="4" cols="25" id="other_info" class="textarea" placeholder="Piezīmēm"></textarea><br><br>
+<h2 {font-size: 48px;}>Izgītība</h2> 
+<div id="div_education" class="edu">
 <select id="education_date">
 	<option value="2000">2000</option>
 	<option value="2005">2005</option>
@@ -31,11 +43,11 @@ Izglītīb
 	<option value="04">04</option>
 </select>
 <input type="text" id="education">
-<button onclick="add_education()" type="button">pievienot Izglītība</button>
+<button onclick="add_education()" type="button" class="button">Pievienot izglītību</button>
 <br><br>
 </div>
-Darba pieredze
-<div id="div_job_history">
+<h2 {font-size: 48px;}>Darba pieredze</h2>
+<div id="div_job_history" class="job">
 <select id="job_history_date">
 	<option value="2000">2000</option>
 	<option value="2005">2005</option>
@@ -50,11 +62,11 @@ Darba pieredze
 </select>
 <input type="text" id="job_history">
 
-<button onclick="add_job_history()" type="button">pievienot Darba pieredzi</button>
+<button id="button" onclick="add_job_history()" type="button" class="button">pievienot Darba pieredzi</button>
 <br><br>
 </div>
-Valodas
-<div id="div_language">
+<h2 {font-size: 48px;}>Valodas</h2>
+<div id="div_language" class="lang">
 <select id="language">
 	<option value="LV">LV</option>
 	<option value="RU">RU</option>
@@ -69,16 +81,17 @@ Valodas
   <input type="radio" name="language_level" id="L3" value="Teicami">
   <label for="language_level_3">Teicami</label>
   
-  <button onclick="add_language()" type="button">pievienot valodu pieredzi</button>
+  <button onclick="add_language()" type="button" class="button">Pievienot valodu pieredzi</button>
   <br><br> 
 </div> 
  	
-<p><button onclick="save_cv()" type="button">Saglabāt</button>
-   <button onclick="print_cv()" type="button">Izdrukāt</button> </p>
+<p><button onclick="save_cv()" type="button" class="button">Saglabāt</button>
+   <button onclick="print_cv()" type="button" class="button">Izdrukāt</button>
+   <button onclick="OpenNewWindow()">Subscribe</button> </p>
 
 </div> 
 	
-    <script src="./js/script.js"></script>
+<script src="./js/script.js"></script>
     
 </body>
 </html>
