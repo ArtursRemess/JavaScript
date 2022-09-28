@@ -5,6 +5,14 @@
   box-sizing: border-box;
 }
 
+.poster{
+  text-align: center;
+  vertical-align: top;
+  width: 300px;
+  height: 400px;
+  display: inline-block;
+}
+
 ._remove {
 
   cursor: pointer;
@@ -22,19 +30,32 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0;
 }
- table {
-  border: 1px solid;
+
+
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+table {
+  
   justify-content: center;
   align-items: center;
-  
+  vertical-align: top;
   
 }
 td {
   justify-content: center;
   align-items: center;
-  border: 1px solid;
   text-align:center;
+  vertical-align: top;
 }
+
+iframe {
+  border: 0;
+  background-color : transparent;
+}
+
 
 
 .movie-container {
@@ -83,6 +104,11 @@ td {
   background-color: #fff;
 }
 
+.seat.bought {
+  background-color: green;
+}
+
+
 .seat:nth-of-type(2) {
   margin-right: 18px;
 }
@@ -91,15 +117,17 @@ td {
   margin-left: 18px;
 }
 
-.seat:not(.occupied):hover {
+.seat:not(.occupied,.bought):hover {
   cursor: pointer;
   transform: scale(1.2);
 }
 
-.showcase .seat:not(.occupied):hover {
+
+.showcase .seat:not(.occupied,.bought):hover {
   cursor: default;
   transform: scale(1);
 }
+
 
 .showcase {
   background: rgba(0, 0, 0, 0.1);
@@ -142,3 +170,4 @@ p.text {
 p.text span {
   color: #6feaf6;
 }
+
