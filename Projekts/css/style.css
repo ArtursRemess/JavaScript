@@ -4,6 +4,11 @@
 * {
   box-sizing: border-box;
 }
+/*stars*/
+
+.checked {
+  color: orangered;
+  }
 
 .poster{
   text-align: center;
@@ -11,6 +16,10 @@
   width: 300px;
   height: 400px;
   display: inline-block;
+}
+
+.poster:hover {
+  transform: scale(1.1); 
 }
 
 ._remove {
@@ -88,7 +97,8 @@ iframe {
 
 
 .seat {
-  background-color: #444451;
+  /* background-color: #444451; */
+  background-color: darkgreen; 
   height: 12px;
   width: 15px;
   margin: 3px;
@@ -97,17 +107,16 @@ iframe {
 }
 
 .seat.selected {
-  background-color: #6feaf6;
+  background-color: #8d8b00;
 }
 
 .seat.occupied {
-  background-color: #fff;
+  background-color: darkred;
 }
 
 .seat.bought {
-  background-color: green;
+  background-color: rgb(0, 0, 66);
 }
-
 
 .seat:nth-of-type(2) {
   margin-right: 18px;
