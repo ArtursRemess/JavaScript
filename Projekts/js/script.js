@@ -1,4 +1,5 @@
-﻿var seats = []; //sēdvietu masīvs
+﻿/* Cinema seats no https://vanillawebprojects.com/projects/movie-seat-booking/ */
+var seats = []; //sēdvietu masīvs
 var seats_occupied = []; //jau aizņemtās sēdvietas
 var tickets = []; // nopirktās biļetes
 var seats_selected = JSON.parse(localStorage.getItem('selectedSeats')); // no web storage paņem datus ar jau aizņemtām vietām
@@ -7,11 +8,21 @@ var checkout = JSON.parse(localStorage.getItem('checkout')); //pagaidu izvēle
 var order = JSON.parse(localStorage.getItem('order')); // visas pasūtītās sēdvietas
 const div_kino = document.getElementById('kino'); // div sēdvietu zāle
 
-
 const seat_rows = 10; //sēdvietu rindu skaits
 const seat_seats = 10; //sēdvietas rindā
 const seats_total = (seat_seats * seat_rows); // kopējais sēdvietu skaits
 const seats_occupied_total = Math.floor(Math.random() * (seats_total + 1)) ; //jau Random aizņemto sēdvietu skaits
+let params = new URLSearchParams(document.location.search); // dati no query string
+const movieid = Number(params.get("id"));
+// current movie dati par tekošo filmu
+const cmovie = {
+    ticket_price : movies[movieid].at(1),
+    movie_name : movies[movieid].at(2),
+    poster : movies[movieid].at(3),
+    cast : movies[movieid].at(4),
+    description : movies[movieid].at(5),
+    _youtube : movies[movieid].at(6)
+  };
 
 for (let i = 1; i < seat_rows+1; i++)  // izveido masīvu ar sēdvietu numuru sarakstu
 {
@@ -21,13 +32,12 @@ for (let i = 1; i < seat_rows+1; i++)  // izveido masīvu ar sēdvietu numuru sa
   }
 }
 
+// pirmās lapas funkcija
+function movie_list(){ 
 
-let params = new URLSearchParams(document.location.search); // dati no query string
-const movieid = Number(params.get("id"));
-// dati par filmu
-const ticketPrice = movies[movieid].at(1); // filmas biļetes cena
+  create_movie_list(); // ielādē datus
 
-function movie_list(){
+  localStorage.removeItem('selectedSeats');// dzēš izvēlētās sēdvietas
   i = 0;
   movies.forEach((movie,movie_index) => {
     i++;
@@ -39,6 +49,18 @@ function movie_list(){
   });
 }
 
+function create_html_left_top(){
+  document.getElementById('poster').insertAdjacentHTML("afterbegin", "<a href='index.html'><img src= './poster/"+ cmovie.poster + "' alt='" + cmovie.movie_name + "'></a>"); 
+  document.getElementById('ticket_price').innerText = "Movie price " + cmovie.ticket_price + " EUR"; 
+  document.getElementById('cast').innerText = cmovie.cast; 
+  document.getElementById('description').innerText = cmovie.description; 
+  document.getElementById('movie_name').innerText = cmovie.movie_name;
+
+  document.getElementById('_youtube').insertAdjacentHTML("afterbegin", "<iframe width='358px' height='200px' src='https://www.youtube.com/embed/" + (cmovie._youtube) +"?autoplay=1&mute=1&loop=1&controls=0'></iframe>"); 
+  create_kino_seats();
+}
+
+
 function create_random_seats(seats_total, seats_occupied_total){ //izveido masīvu ar aizņemtajiem krēsliem
   var temp_string=[];
   for (let i = 0; i < seats_total; i++)  // izveido pagaidu rindu ar masīva indexiem
@@ -48,58 +70,51 @@ function create_random_seats(seats_total, seats_occupied_total){ //izveido masī
   let id_todel=0;
   let xxx = [];
   for (let i = 0; i < seats_occupied_total; i++){  // izvēlas gadījuma ierakstus un pārnes jaunajā masīvā
-      id_todel=(Math.floor(Math.random() * (temp_string.length)));
-      xxx.push(Number(temp_string.splice(id_todel,1)));  
+      id_todel=(Math.floor(Math.random() * (temp_string.length))); // atrod gadījuma skaitli
+      xxx.push(Number(temp_string.splice(id_todel,1)));  // pārnes gadījuma skaitļu masīvā
   } 
    return xxx;
 }
 
-function create_html_left_top(){
-  document.getElementById('poster').insertAdjacentHTML("afterbegin", "<img src= './poster/"+ movies[movieid].at(3)+ "' alt='Poster'>"); 
-  document.getElementById('ticket_price').innerText = "Movie price " + (ticketPrice) + " EUR"; 
-  document.getElementById('cast').innerText = (movies[movieid].at(4)); 
-  document.getElementById('description').innerText = (movies[movieid].at(5)); 
-  document.getElementById('movie_name').innerText = (movies[movieid].at(2));
-
-  document.getElementById('_youtube').insertAdjacentHTML("afterbegin", "<iframe width='358px' height='200px' src='https://www.youtube.com/embed/" + (movies[movieid].at(6)) +"?autoplay=1&mute=1&loop=1&controls=0'></iframe>"); 
-  create_kino_seats();
-}
 
 function create_kino_seats(){
-  // document.getElementById('checkout').reset();
-  // document.getElementById('showcase').reset();
   order = JSON.parse(localStorage.getItem('order')); // visas pasūtītās sēdvietas
   if (!order) {order=[]}
-  div_kino.innerHTML='';
-  if (order){ // atlasa esošās filmas nopirktās vietas, ja order nav tukšs
+  div_kino.innerHTML=''; 
+  if (order){ // atlasa esošās filmas nopirktās vietas
     order.forEach((seat_id) => {
       if (movieid == seat_id.at(0)) {
         tickets.push(seat_id.at(1));
       }
     });
   }
-
   seats_occupied = create_random_seats(seats_total, seats_occupied_total);
-  
-  div_kino.insertAdjacentHTML("beforeend", "<div class='row' id='row'></div>"); // izveido 1.rindu
-  var div_row = div_kino.lastElementChild; // atlasa pēdējo child no "kino"
   i = 1;
+  j = 1;
+  div_kino.insertAdjacentHTML("beforeend", "<div class='row' id='row'><font style='color:#242333'>0</font>" + j + ".</div>"); // izveido 1.rindu
+  var div_row = div_kino.lastElementChild; // atlasa pēdējo child no "kino"
   seats.forEach((seat,current_id) => { //izveido zāli ar random
     if (seats_selected !== null && seats_selected.includes(current_id) ){  // izvēlētās sēdvietas
-      div_row.insertAdjacentHTML("beforeend", "<div class='seat selected' title='"+ seat.at(0) +".row, "+ seat.at(1) +". seat id="+current_id + "' id ='"+current_id+"'+></div>"); 
+      div_row.insertAdjacentHTML("beforeend", "<div class='seat selected' title='"+ seat.at(0) +".row "+ seat.at(1) +".seat' id ='"+current_id+"'+></div>"); 
     }else if(tickets.includes(current_id)){ //nopirktās sēdvietas 
-      div_row.insertAdjacentHTML("beforeend", "<div class='seat bought' title='"+ seat.at(0) +".row, "+ seat.at(1) +". seat id="+current_id + "' id ='"+current_id+"'+></div>");
+      div_row.insertAdjacentHTML("beforeend", "<div class='seat bought' title='"+ seat.at(0) +".row "+ seat.at(1) +".seat' id ='"+current_id+"'+></div>");
     }else if(seats_occupied.includes(current_id)){ //random aizņemtās sēdvietas 
-      div_row.insertAdjacentHTML("beforeend", "<div class='seat occupied' title='"+ seat.at(0) +".row, "+ seat.at(1) +". seat id="+current_id + "' id ='"+current_id+"'+></div>");
+      div_row.insertAdjacentHTML("beforeend", "<div class='seat occupied' title='"+ seat.at(0) +".row "+ seat.at(1) +".seat' id ='"+current_id+"'+></div>");
     }else{ // pārējās sēdvietas
-     div_row.insertAdjacentHTML("beforeend", "<div class='seat' title='"+ seat.at(0) +".row, "+ seat.at(1) +". seat id="+current_id + "' id ='"+current_id+"'+></div>"); 
+     div_row.insertAdjacentHTML("beforeend", "<div class='seat' title='"+ seat.at(0) +".row "+ seat.at(1) +".seat' id ='"+current_id+"'+></div>"); 
     };
     if (i < seat_seats){  //skaita krēslus rindā, ja sasniegts skaits veido jaunu rindu
       i++;
     }
     else if ((seats.length-1) > current_id) // ja ir pēdējais ieraksts nepievienot jaunu sēdvietu rindu
     { i = 1;
-      div_kino.insertAdjacentHTML("beforeend", "<div class='row' id='row'></div>"); 
+      j++;
+      if (j < 10) {
+        div_kino.insertAdjacentHTML("beforeend", "<div class='row' id='row'><font style='color:#242333'>0</font>" + j + ".</div>"); 
+        }
+      else{
+        div_kino.insertAdjacentHTML("beforeend", "<div class='row' id='row'>" + j + ".</div>"); 
+      }
       div_row = div_kino.lastElementChild;
     }  
   });
@@ -125,13 +140,13 @@ function create_kino_seats(){
     //saglabā selected seats datus
     localStorage.setItem('selectedSeats', JSON.stringify(seats_selected));
     count.innerText = seats_selected.length;
-    total.innerText = seats_selected.length * ticketPrice;
+    total.innerText = seats_selected.length * cmovie.ticket_price;
     };
   });
   
   if (seats_selected !== null){
     count.innerText = seats_selected.length;
-    total.innerText = seats_selected.length * ticketPrice;
+    total.innerText = seats_selected.length * cmovie.ticket_price;
     }
 }
 
@@ -152,11 +167,6 @@ function rate_stars() {  /* zvaigznes */
   document.getElementById('stars').innerHTML=stars;
 };
 
-
-
-
-
-
 function checkout_submit(){ //pāriet pie apmaksas no
   if (!seats_selected || seats_selected.length == 0) { //nav izvēlētas vietas
     alert("Choose seats to proceed Checkout");
@@ -167,7 +177,7 @@ function checkout_submit(){ //pāriet pie apmaksas no
                     seat_id,
                     seats[seat_id].at(0),
                     seats[seat_id].at(1),
-                    ticketPrice]);
+                    cmovie.ticket_price]);
     })
         localStorage.setItem('checkout', JSON.stringify(checkout_tmp)); //ieraksta checkout saglabāto iekš storage
         document.getElementById('checkout').remove()
@@ -229,3 +239,18 @@ function buynow(){
    alert("Thank You! For purchase");
    location.reload();
 }
+
+function create_movie_list(){ // active, movie_price, movie_name, poster_img, movie_cast, movie_desc, Youtube
+  var movies = [];
+  movies.push([1,10,"Minions","minions.jpg","Steve Carell ... Gru (voice)","The untold story of one twelve-year-old's dream to become the world's greatest supervillain.","6DxjJzmYsXo"]);
+  movies.push([1,12,"The Batman","batman.jpg","Robert Pattinson	...	Bruce Wayne / The Batma","When a sadistic serial killer begins murdering key political figures in Gotham, Batman is forced to investigate the city's hidden corruption and question his family's involvement.","mqqft2x_Aa4"]);
+  movies.push([1,8,"Naked Gun 33 1/3: The Final Insult","naked_gun.jpg","Leslie Nielsen	...	Lt. Frank Drebin","Frank Drebin (Leslie Nielsen) comes out of retirement to help Police Squad infiltrate a gang of terrorists planning to detonate a bomb at the Academy Awards.","SQaULBUqxMs"]);
+  movies.push([1,14,"Fifty Shades of Grey","50.jpg","Dakota Johnson	...	Anastasia Steele","Literature student Anastasia Steele's life changes forever when she meets handsome, yet tormented, billionaire Christian Grey.","SfZWFDs0LxA"]);
+  movies.push([1,9,"Dumb and Dumber To","dumb.jpg","Jim Carrey	...	Lloyd","20 years since their first adventure, Lloyd and Harry go on a road trip to find Harry's newly discovered daughter, who was given up for adoption.","dmNddThxi4c"]);
+  movies.push([1,11,"The Hangover","hangover.jpg","Bradley Cooper	...	Phil","Three buddies wake up from a bachelor party in Las Vegas, with no memory of the previous night and the bachelor missing. They make their way around the city in order to find their friend before his wedding.","tcdUhdOlz9M"]);
+  movies.push([1,7,"Saw","saw.jpg","Leigh Whannell	...	Adam Faulkner-Stanheight","Two strangers awaken in a room with no recollection of how they got there, and soon discover they're pawns in a deadly game perpetrated by a notorious serial killer.","OCZp5v8V-94"]);
+
+  localStorage.setItem('movies', JSON.stringify(movies));
+  console.log('movies');
+  console.log(movies);
+};
